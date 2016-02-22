@@ -1,0 +1,70 @@
+# Filename : file
+# Author : Lal Thomas 
+# Date : 2016-02-22
+# © Lal Thomas (lal.thomas.mail@gmail.com)
+# todotxt cli addon for file operation
+
+
+function usage() {
+  echo "  $(basename $0) [OPTION] [TERM]"
+  
+  exit
+}
+
+open(){
+
+# open command don't work on windows	
+# todo: add support multiple type for cygwin
+
+# open the file
+
+	case "$OSTYPE" in
+	cygwin*)		
+		 "C:/Program Files (x86)/Notepad++/notepad++.exe" "$1"
+		;;	
+	darwin*) 
+		# OSX		
+		open  "$1"		
+		;; 
+	msys*)
+		# Windows
+		start ""  "$1"
+		;; 		
+	*) 
+		echo "unknown: $OSTYPE" 
+		;;
+	esac
+}
+
+# Get action
+action=$1
+shift
+
+# Get option
+option=$1;
+shift
+
+ case $option in
+
+	"usage")
+		usage
+		exit	
+	;;
+	
+	"open")	
+		filename="$@"		
+		open $filename	
+		exit
+	;;
+		
+	*)
+	# list planner file	
+	 echo
+	 echo "arguments - $@ - not valid" 
+	 echo 
+	 usage
+	 exit
+	;;	   
+esac
+
+
