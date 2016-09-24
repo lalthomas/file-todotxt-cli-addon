@@ -20,7 +20,7 @@ open(){
 
 	case "$OSTYPE" in
 	cygwin*)		
-		 "C:/Program Files (x86)/Notepad++/notepad++.exe" "$1"
+		 cygstart "C:/Program Files (x86)/Notepad++/notepad++.exe" "$1"
 		;;	
 	darwin*) 
 		# OSX		
@@ -44,7 +44,7 @@ shift
 option=$1;
 shift
 
- case $option in
+case $option in
 
 	"usage")
 		usage
