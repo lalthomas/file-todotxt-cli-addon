@@ -6,8 +6,7 @@
 
 
 function usage() {
-  echo "  $(basename $0) [OPTION] [TERM]"
-  
+  echo "  file [OPTION] [TERM]"  
   exit
 }
 
@@ -44,7 +43,7 @@ shift
 option=$1;
 shift
 
-case $option in
+case "$option" in
 
 	"usage")
 		usage
